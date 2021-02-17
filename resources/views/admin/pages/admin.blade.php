@@ -1,7 +1,7 @@
 @extends('admin.app')
 
 @section('title')
-    Dashboard
+    Admin
 @endsection
 
 @section('content-header')

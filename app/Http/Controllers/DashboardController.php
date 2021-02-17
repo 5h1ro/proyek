@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use UxWeb\SweetAlert\SweetAlert;
+use UxWeb\SweetAlert\SweetAlertNotifier;
+use UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert;
+use UxWeb\SweetAlert\SweetAlertServiceProvider;
+use Alert;
 use App\Models\Material;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -21,5 +26,10 @@ class DashboardController extends Controller
     {
         $barangs = Barang::paginate(100);
         return view('admin.pages.admin', compact('barangs'));
+    }
+
+    public function about()
+    {
+        return view('admin.pages.about');
     }
 }

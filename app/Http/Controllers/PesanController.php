@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Pesanan;
+use UxWeb\SweetAlert\SweetAlert;
+use Alert;
+use UxWeb\SweetAlert\SweetAlertNotifier;
+use UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert;
+use UxWeb\SweetAlert\SweetAlertServiceProvider;
 use App\Models\PesananDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -60,6 +65,8 @@ class PesanController extends Controller
        $pesanan->jumlah_harga = $pesanan->jumlah_harga+$barang->harga*$request->jumlah_pesan;
        $pesanan->update();
 
-       return redirect('dashboard');
+
+    //    SweetAlert::success('Success Message', 'Optional Title');
+       return redirect('dashboard')->with('success', 'Berhasil Dimasukkan Keranjang');
     }
 }

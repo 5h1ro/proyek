@@ -49,7 +49,7 @@
 <div class="row">
 @foreach ($barangs as $barang)
 <div class="col-md-3">
-    <div class="card card-success">
+    <div class="card card-success" data-aos="fade-up">
         <div class="card-header">
             <h3 class="card-title">{{$barang->nama_barang}}</h3>
 
@@ -71,7 +71,7 @@
             <img src="{{ url('uploads') }}/{{ $barang->gambar }}" class="card-img-top" alt="...">
                 <h5 class="card-title">{{$barang->nama_barang}}</h5>
                 <p class="card-text">{{$barang->keterangan}}</p>
-                <a href="{{ url('pesan') }}/{{ $barang->id }}" class="btn btn-success">Rp. {{ number_format ($barang->harga)}}</a>
+                <a href="{{ url('pesan') }}/{{ $barang->id }}" class="btn btn-success swalDefaultSuccess">Rp. {{ number_format ($barang->harga)}}</a>
         </div>
         <!-- /.card-body -->
     </div>

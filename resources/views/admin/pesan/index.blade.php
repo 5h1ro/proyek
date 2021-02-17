@@ -27,18 +27,18 @@
     <div class="card card-solid">
       <div class="card-body">
         <div class="row">
-          <div class="col-12 col-sm-6">
+          <div class="col-12 col-sm-6" data-aos="fade-up">
             <h3 class="d-inline-block d-sm-none">{{ $barangs->nama_barang }}</h3>
             <div class="col-12">
               <img src="{{ url('uploads') }}/{{ $barangs->gambar }}" class="product-image" alt="Product Image">
             </div>
           </div>
-          <div class="col-12 col-sm-6">
+          <div class="col-12 col-sm-6" data-aos="fade-left">
             <h3 class="my-3">{{ $barangs->nama_barang }}</h3>
             <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
 
             <hr>
-            <div class="bg-gray py-2 px-3 mt-4">
+            <div class="bg-gray py-2 px-3 mt-4" data-aos="fade-left">
               <h2 class="mb-0">
                 Rp. {{ number_format ($barangs->harga) }}
               </h2>
@@ -46,7 +46,7 @@
                 <small> Rp. {{ number_format ($barangs->harga) }}</small>
               </h4>
             </div>
-            <div class="form-group">
+            <div class="form-group" data-aos="fade-left">
                 <label for="exampleInputPassword1" class="mt-4">Jumlah</label>
                 <form method="POST" action="{{ url('pesan') }}/{{ $barangs->id}}" >
                     @csrf
@@ -59,7 +59,7 @@
 
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="row mt-4" data-aos="fade-up">
           <nav class="w-100">
             <div class="nav nav-tabs" id="product-tab" role="tablist">
               <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
