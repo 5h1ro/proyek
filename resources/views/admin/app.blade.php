@@ -74,11 +74,26 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <?php
+                        $pesanan_utama = \App\Models\Pesanan::where('user_id', Auth::user()->id)->where
+                            ('status',0)->first();
+                            if (!empty($pesanan_utama)) {
+                              $notif = \App\Models\PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
+                            }
+                    ?>
+                    <a href="{{ url('checkout') }}" class="nav-link"><i class="fa fa-shopping-cart"></i>
+                      @if (!empty($notif))
+                        <span class="badge badge-warning">{{ $notif }}</span>
+                      @endif
+                      Checkout</a>
+
+                </li>
+                <li class="nav-item mt-10">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
                         <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                this.closest('form').submit();" class="nav-link">
                             {{ __('Logout') }}
                         </x-dropdown-link>
                     </form>
@@ -105,7 +120,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{ url('/profil') }}" class="d-block">{{ Auth::user()->username }}</a>
+                        <a href="{{ url('profil') }}" class="d-block">{{ Auth::user()->username }}</a>
                     </div>
                 </div>
 

@@ -37,15 +37,15 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('checkout') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Produk</p>
+                    <p>Checkout</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Beli</p>
+                    <p>Pembayaran</p>
                 </a>
             </li>
         </ul>

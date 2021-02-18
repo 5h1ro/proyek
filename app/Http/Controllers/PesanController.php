@@ -9,9 +9,11 @@ use UxWeb\SweetAlert\SweetAlertNotifier;
 use UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert;
 use UxWeb\SweetAlert\SweetAlertServiceProvider;
 use App\Models\PesananDetail;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class PesanController extends Controller
 {
@@ -67,6 +69,59 @@ class PesanController extends Controller
 
 
     //    SweetAlert::success('Success Message', 'Optional Title');
-       return redirect('dashboard')->with('success', 'Berhasil Dimasukkan Keranjang');
+       FacadesAlert::success('Success', 'Berhasil Dimasukkan Keranjang');
+       return redirect('dashboard');
+    }
+
+    public function checkout()
+    {
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        if(!empty($pesanan))
+        {
+            $pesanan_details =  PesananDetail::where('pesanan_id', $pesanan->id)->get();
+            return view('admin.pesan.checkout', compact('pesanan', 'pesanan_details'));
+        }
+
+        return view('admin.pesan.checkout', compact('pesanan'));
+
+    }
+
+    public function delete($id)
+    {
+        $pesanan_detail = PesananDetail::where('id', $id)->first();
+        $pesanan = Pesanan::where('id', $pesanan_detail->pesanan_id)->first();
+        $pesanan->jumlah_harga = $pesanan->jumlah_harga-$pesanan_detail->jumlah_harga;
+        $pesanan->update();
+
+        $pesanan_detail->delete();
+
+        FacadesAlert::info('Info','Pesanan Berhasil Dihapus');
+        return redirect('checkout');
+
+    }
+
+    public function konfirmasi()
+    {
+
+        $user = User::where('id', Auth::user()->id)->first();
+
+        if(empty($user->alamat))
+        {
+            FacadesAlert::error('Error','Lengkapi Alamat Anda');
+            return redirect('profil');
+        }
+
+        if(empty($user->noHp))
+        {
+            FacadesAlert::error('Error','Lengkapi No Hp Anda');
+            return redirect('profil');
+        }
+
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $pesanan->status = 1;
+        $pesanan->update();
+
+        FacadesAlert::success('Success', 'Berhasil Di Checkout');
+       return redirect('checkout');
     }
 }
