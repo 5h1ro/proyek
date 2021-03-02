@@ -36,6 +36,7 @@
             <th style="width: 10px">No</th>
             <th>Barang</th>
             <th style="width: 40px">Jumlah</th>
+            <th style="width: 6%">Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +45,16 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$barang->nama_barang}}</td>
                     <td>{{$barang->stok}}</td>
+                    <td>
+                        <div class="row">
+                            <a href="{{ url('edit') }}/{{ $barang->id }}" class="btn btn-success btn-sm ml-2"><i class="fa fa-edit"></i></a>
+                            <form action="{{ url('delete') }}/{{ $barang->id }}" method="POST">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-danger btn-sm ml-1"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -51,13 +62,7 @@
     </div>
     <!-- /.card-body -->
     <div class="card-footer clearfix">
-      <ul class="pagination pagination-sm m-0 float-right">
-        <li class="page-item"><a class="page-link" href="#">«</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">»</a></li>
-      </ul>
+        <a class="btn btn-success float-right" href="#"><i class="fa fa-plus-square"></i> Tambah Data</a>
     </div>
   </div>
 

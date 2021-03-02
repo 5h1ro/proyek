@@ -122,6 +122,33 @@ class PesanController extends Controller
         $pesanan->update();
 
         FacadesAlert::success('Success', 'Berhasil Di Checkout');
-       return redirect('checkout');
+        return redirect('pembayaran');
+    }
+
+    public function pembayaran(){
+
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 1)->first();
+        if(empty($pesanan))
+        {
+            FacadesAlert::error('Error','Tidak Yang Bisa Di bayar');
+            return redirect('dashboard');
+        }
+        return view('admin.pesan.pembayaran', compact('pesanan'));
+    }
+
+    public function upload(Request $request){
+
+        dd($request->file('bukti'));
+
+    }
+
+    public function bayar()
+    {
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 1)->first();
+        $pesanan->status = 2;
+        $pesanan->update();
+
+        FacadesAlert::success('Success', 'Berhasil Di Bayar');
+        return redirect('dashboard');
     }
 }

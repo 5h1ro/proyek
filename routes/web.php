@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\UploadController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -41,8 +43,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('checkout/{id}', [PesanController::class, 'delete']);
 
     Route::get('konfirmasi', [PesanController::class, 'konfirmasi']);
+    Route::get('/bayar', [PesanController::class, 'bayar']);
 
 
     Route::get('profil', [ProfilController::class, 'index']);
     Route::post('profil', [ProfilController::class, 'update']);
+
+    Route::get('/upload', [UploadController::class, 'index'])->name('upload');
+    Route::get('pembayaran', [PesanController::class, 'pembayaran']);
+
+
+    Route::get('/edit/{id}', [AdminController::class, 'index']);
+    Route::post('edit', [AdminController::class, 'edit']);
+    Route::delete('delete/{id}', [AdminController::class, 'delete']);
 });

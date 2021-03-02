@@ -29,7 +29,7 @@
     <div class="card card-primary card-outline" data-aos="fade-up">
       <div class="card-body box-profile">
         <div class="text-center">
-          <img class="profile-user-img img-fluid img-circle img-size-500" src="{{ asset('vendor') }}/dist/img/user4-128x128.jpg" alt="User profile picture">
+          <img class="profile-user-img img-fluid img-circle img-size-500" src="uploads/pp.png" alt="User profile picture">
         </div>
 
         <h3 class="profile-username text-center">Oke Cell</h3>

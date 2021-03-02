@@ -9,16 +9,16 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href=" {{ route('admin') }} " class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Master Data</p>
+                    <p>Data Barang</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
-                        Setup table
+                        Tambah Barang
                     </p>
                 </a>
             </li>
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('pembayaran') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Pembayaran</p>
                 </a>

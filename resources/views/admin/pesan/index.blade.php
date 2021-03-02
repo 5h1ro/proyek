@@ -36,27 +36,22 @@
           <div class="col-12 col-sm-6" data-aos="fade-left">
             <h3 class="my-3">{{ $barangs->nama_barang }}</h3>
             <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-
             <hr>
             <div class="bg-gray py-2 px-3 mt-4" data-aos="fade-left">
               <h2 class="mb-0">
                 Rp. {{ number_format ($barangs->harga) }}
               </h2>
-              <h4 class="mt-0">
-                <small> Rp. {{ number_format ($barangs->harga) }}</small>
-              </h4>
             </div>
             <div class="form-group" data-aos="fade-left">
-                <label for="exampleInputPassword1" class="mt-4">Jumlah</label>
+                <label for="jumlahBeli" class="mt-4">Jumlah</label>
                 <form method="POST" action="{{ url('pesan') }}/{{ $barangs->id}}" >
                     @csrf
-                    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="1" required="" name="jumlah_pesan">
-                    <button type="submit" class="btn btn-primary btn-lg btn-flat">
+                    <input type="number" class="form-control" id="jumlahBeli" placeholder="1" required="" name="jumlah_pesan">
+                    <button type="submit" class="btn btn-primary btn-lg  mt-3">
                         <i class="fas fa-cart-plus fa-lg mr-2"></i>
                             Add to Cart
                     </button>
                 </form>
-
             </div>
         </div>
         <div class="row mt-4" data-aos="fade-up">
