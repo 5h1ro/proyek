@@ -16,4 +16,5 @@ class PesananDetail extends Model
     {
         return $this->belongsTo('App\Models\Pesanan','pesanan_id', 'id');
     }
+
 }

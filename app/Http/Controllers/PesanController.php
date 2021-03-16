@@ -39,6 +39,7 @@ class PesanController extends Controller
             $pesanan->user_id = Auth::user()->id;
             $pesanan->tanggal = $tanggal;
             $pesanan->status = 0;
+            $pesanan->bukti = 'kosong';
             $pesanan->jumlah_harga = 0;
             $pesanan->save();
        }
@@ -121,6 +122,7 @@ class PesanController extends Controller
         $pesanan->status = 1;
         $pesanan->update();
 
+
         FacadesAlert::success('Success', 'Berhasil Di Checkout');
         return redirect('pembayaran');
     }
@@ -142,11 +144,23 @@ class PesanController extends Controller
 
     }
 
-    public function bayar()
+    public function bayar(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $namaFile = time().'.'.$request->image->extension();
+        $request->image->move(public_path('bukti'), $namaFile);
+
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 1)->first();
+        $pesanan->bukti = $namaFile;
         $pesanan->status = 2;
         $pesanan->update();
+
+
+        // dd($namaFile);
+        // $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 1)->first();
+        // $pesanan->update();
 
         FacadesAlert::success('Success', 'Berhasil Di Bayar');
         return redirect('dashboard');

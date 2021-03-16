@@ -40,9 +40,24 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-sm-4" data-aos="fade-up">
-                    <a class="btn btn-success float-right" href="{{ url('/bayar') }}"><i class="fa fa-cash-register"></i> Bayar</a>
-                </div>
+                <form class="row" method="POST" action="{{ url('/bayar') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-sm-6" data-aos="fade-up">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Gambar</label>
+                                <br>
+                                <input type="file" id="image" name="image" required autofocus>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-cash-register"></i>
+                                Bayar
+                            </button>
+                        </div>
+                    </div>
+                </form>
 
             </div>
         </div>

@@ -62,7 +62,7 @@
     </div>
     <!-- /.card-body -->
     <div class="card-footer clearfix">
-        <a class="btn btn-success float-right" href="#"><i class="fa fa-plus-square"></i> Tambah Data</a>
+        <a class="btn btn-success float-right" href=" {{ url('add') }} "><i class="fa fa-plus-square"></i> Tambah Data</a>
     </div>
   </div>
 

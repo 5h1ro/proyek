@@ -46,7 +46,7 @@
                 <label for="jumlahBeli" class="mt-4">Jumlah</label>
                 <form method="POST" action="{{ url('pesan') }}/{{ $barangs->id}}" >
                     @csrf
-                    <input type="number" class="form-control" id="jumlahBeli" placeholder="1" required="" name="jumlah_pesan">
+                    <input type="number" class="form-control" id="jumlahBeli" placeholder="1" required="" name="jumlah_pesan" value="1">
                     <button type="submit" class="btn btn-primary btn-lg  mt-3">
                         <i class="fas fa-cart-plus fa-lg mr-2"></i>
                             Add to Cart
