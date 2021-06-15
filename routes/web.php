@@ -66,13 +66,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dibayar', [AdminController::class, 'dibayar']);
     // Route::get('/info', [AdminController::class, 'info']);
     Route::get('/info/{id}', [AdminController::class, 'info']);
-<<<<<<< HEAD
 
     Route::get('/user', [AdminController::class, 'user'])->name('user');
     Route::delete('deleteUser/{id}', [AdminController::class, 'deleteUser']);
 
     Route::get('/dynamic_pdf/pdf', [DynamicPDFController::class, 'pdf']);
     Route::get('/dynamic_pdf/cetak_pdf', [DynamicPDFController::class, 'cetak_pdf']);
-=======
->>>>>>> 422b5ceb149c48a8b1d60e047721b5cd6bcfbefc
 });
