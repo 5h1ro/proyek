@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -17,9 +18,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -44,4 +46,9 @@ class User extends Authenticatable
     public function pesanan() {
         return $this->hasMany('App\Pesanan','user_id', 'id');
     }
+
+    // public function pesanan() {
+    //     return $this->hasMany('App\Models\Pesanan','user_id', 'id');
+    // }
+
 }

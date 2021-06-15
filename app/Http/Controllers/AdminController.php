@@ -13,6 +13,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class AdminController extends Controller
@@ -45,4 +46,64 @@ class AdminController extends Controller
         return redirect('admin');
 
     }
+
+    public function add()
+    {
+        return view('admin.pages.add');
+    }
+
+    public function tambah(Request $request){
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $namaFile = time().'.'.$request->image->extension();
+        $request->image->move(public_path('uploads'), $namaFile);
+
+        Barang::insert([
+            'nama_barang' => $request->nama_barang,
+            'gambar' => $namaFile,
+            'harga' => $request->harga,
+            'stok' => $request->stok,
+            'keterangan' => $request->keterangan,
+        ]);
+
+
+    //  //    SweetAlert::success('Success Message', 'Optional Title');
+        FacadesAlert::success('Success', 'Data berhasil ditambahkan');
+        return redirect('dashboard');
+     }
+
+     public function dibayar(){
+        $pesanans = Pesanan::where('status', '2')->get();
+        // dd($barangs);
+        return view('admin.pages.dibayar', compact('pesanans'));
+    }
+
+
+    public function info($id){
+        $details = PesananDetail::where('pesanan_id', $id)->get();
+        // dd($barangs);
+        return view('admin.pages.info', compact('details'));
+    }
+
+    public function user()
+    {
+        $users = User::paginate(100);
+        return view('admin.pages.user', compact('users'));
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::where('id', $id)->first();
+        // dd($barang);
+        $user->delete();
+
+        FacadesAlert::info('Info','User Berhasil Dihapus');
+        return redirect('user');
+
+    }
+
+
+
 }

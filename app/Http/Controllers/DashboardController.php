@@ -32,4 +32,11 @@ class DashboardController extends Controller
     {
         return view('admin.pages.about');
     }
+
+    public function utama()
+    {
+        $barangs = Barang::paginate(20);
+        // dd($barangs);
+        return view('dashboard',  compact('barangs'));
+    }
 }

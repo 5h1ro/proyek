@@ -15,10 +15,24 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href=" {{ route('user') }} " class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data User</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('add') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                         Tambah Barang
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dibayar') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                        Dibayar
                     </p>
                 </a>
             </li>

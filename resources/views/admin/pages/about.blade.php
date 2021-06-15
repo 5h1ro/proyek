@@ -38,17 +38,15 @@
 
         <ul class="list-group list-group-unbordered mb-3">
           <li class="list-group-item">
-            <b>Facebook</b> <a class="float-right">ssss</a>
+            <b>Facebook</b> <a class="float-right">Dany Sgloverz</a>
           </li>
           <li class="list-group-item">
-            <b>Instagram</b> <a class="float-right">sss</a>
+            <b>Instagram</b> <a class="float-right">@dany_sgloverz</a>
           </li>
           <li class="list-group-item">
-            <b>Email</b> <a class="float-right">sss</a>
+            <b>Email</b> <a class="float-right">nurhakikiajha@gmail.com</a>
           </li>
         </ul>
-
-        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
       </div>
       <!-- /.card-body -->
     </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DynamicPDFController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UploadController;
@@ -19,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
+
+Route::get('/', [DashboardController::class, 'utama']);
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -43,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('checkout/{id}', [PesanController::class, 'delete']);
 
     Route::get('konfirmasi', [PesanController::class, 'konfirmasi']);
-    Route::get('/bayar', [PesanController::class, 'bayar']);
+    Route::post('/bayar', [PesanController::class, 'bayar']);
 
 
     Route::get('profil', [ProfilController::class, 'index']);
@@ -56,4 +59,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/edit/{id}', [AdminController::class, 'index']);
     Route::post('edit', [AdminController::class, 'edit']);
     Route::delete('delete/{id}', [AdminController::class, 'delete']);
+    Route::get('/add', [AdminController::class, 'add']);
+    Route::post('/tambah', [AdminController::class, 'tambah']);
+
+
+    Route::get('/dibayar', [AdminController::class, 'dibayar']);
+    // Route::get('/info', [AdminController::class, 'info']);
+    Route::get('/info/{id}', [AdminController::class, 'info']);
+
+    Route::get('/user', [AdminController::class, 'user'])->name('user');
+    Route::delete('deleteUser/{id}', [AdminController::class, 'deleteUser']);
+
+    Route::get('/dynamic_pdf/pdf', [DynamicPDFController::class, 'pdf']);
+    Route::get('/dynamic_pdf/cetak_pdf', [DynamicPDFController::class, 'cetak_pdf']);
 });
