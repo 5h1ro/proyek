@@ -86,6 +86,7 @@ class AdminController extends Controller
         // dd($barangs);
         return view('admin.pages.info', compact('details'));
     }
+<<<<<<< HEAD
 
     public function user()
     {
@@ -106,4 +107,6 @@ class AdminController extends Controller
 
 
 
+=======
+>>>>>>> 422b5ceb149c48a8b1d60e047721b5cd6bcfbefc
 }

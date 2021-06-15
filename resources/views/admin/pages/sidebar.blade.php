@@ -15,12 +15,15 @@
                 </a>
             </li>
             <li class="nav-item">
+<<<<<<< HEAD
                 <a href=" {{ route('user') }} " class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data User</p>
                 </a>
             </li>
             <li class="nav-item">
+=======
+>>>>>>> 422b5ceb149c48a8b1d60e047721b5cd6bcfbefc
                 <a href="{{ url('add') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
